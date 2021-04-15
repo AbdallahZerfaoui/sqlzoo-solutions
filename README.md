@@ -11,21 +11,16 @@ We are going to use a table called World for the next exercices.
   FROM world
     WHERE name = 'Germany'
 ```
-#### 2. show the population of Germany
+#### 2. Show the name and the population for 'Sweden', 'Norway' and 'Denmark'
 ```SQL
-  SELECT population 
+  SELECT name, population 
   FROM world
-    WHERE name = 'Germany'
+    WHERE name IN ('Sweden', 'Norway', 'Denmark')
 ```
-#### 2. show the population of Germany
+#### 3. Just the right size
 ```SQL
-  SELECT population 
+  SELECT name, area 
   FROM world
-    WHERE name = 'Germany'
+    WHERE area BETWEEN 2e5 AND 25e4
 ```
-#### 3. show the population of Germany
-```SQL
-  SELECT population 
-  FROM world
-    WHERE name = 'Germany'
-```
+
