@@ -125,45 +125,45 @@ The next questions are optional and only for students who are finding the basic 
 
 #### 2. Large Countries
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name
+FROM world
+  WHERE population > 2e8
 ```
 #### 3. Per capita GDP
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, gdp/population AS "per capita GDP" 
+FROM world
+  WHERE population > 2e8
 ```
 #### 4. South America In millions
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, population/1e6 AS "population in millions" 
+FROM world
+  WHERE continent= 'South America'
 ```
 #### 5. France, Germany, Italy
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, population
+FROM world 
+  WHERE name in ('France', 'Germany', 'Italy')
 ```
 #### 6. United
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name
+FROM world 
+  WHERE name like '%United%'
 ```
 #### 7. Two ways to be big
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, population, area 
+FROM world
+  WHERE population > 250000000 or area > 3000000
 ```
 #### 8. One or the other (but not both)
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, population, area 
+FROM world
+  WHERE population > 250000000 xor area > 3000000
 ```
 #### 9. Rounding
 ```SQL
