@@ -8,12 +8,12 @@ https://sqlzoo.net/
 3. [SELECT from WORLD Tutorial](#SELECT_from_WORLD_Tutorial)
 
 <details>
-<summary> SELECT basics <a name="SELECT_basics"></a> </summary>
- 
+<summary> SELECT basics <a name="SELECT_basics"></a></summary>
+
 We are going to use a table called World for the next exercices.
 #### 1. show the population of Germany
 ```SQL
-  SELECT population 
+  SELECT population
   FROM world
     WHERE name = 'Germany'
 ```
@@ -39,8 +39,8 @@ We are going to use a table called World for the next exercices.
   SELECT name 
   FROM world
     WHERE name LIKE 'Y%'
- ```
-    
+```
+
 #### 2. Find the countries that end with y
 ```SQL
   SELECT name FROM world
@@ -58,7 +58,7 @@ We are going to use a table called World for the next exercices.
     WHERE name LIKE '%land'
 ```
 #### 5. Find the countries that start with "C" and end with "ia"
-```SQL
+​```SQL
   SELECT name 
   FROM world
     WHERE name LIKE 'c%ia'
@@ -172,36 +172,48 @@ FROM world
 ```SQL
 SELECT name, population, area 
 FROM world
-  WHERE population > 25e7 xor area > 3e6
+  WHERE population > 25e7 XOR area > 3e6
 ```
 #### 9. Rounding
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, 
+       ROUND(population/1e6, 2),
+       ROUND(gdp/1e9, 2) 
+FROM world 
+  WHERE continent = 'South America'
 ```
 #### 10. Trillion dollar economies
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name, 
+       ROUND(gdp/population, -3) AS "per capita GDP" 
+FROM world
+ WHERE GDP > 1000e9
 ```
 #### 11. Name and capital have the same length
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name,      
+       capital
+FROM world
+ WHERE  LEN(name) = LEN(capital)
 ```
 #### 12. Matching name and capital
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name,      
+       capital
+FROM world
+ WHERE  LEFT(name, 1) = LEFT(capital,1)AND
+        name <> capital
 ```
 #### 13. All the vowels
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name=capital
+SELECT name
+FROM world
+WHERE name LIKE '%a%' AND
+      name LIKE '%e%' AND
+      name LIKE '%i%' AND
+      name LIKE '%o%' AND
+      name LIKE '%u%' AND 
+      name NOT LIKE '% %'
 ```
 </details>
+
