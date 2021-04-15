@@ -5,7 +5,10 @@ I will compile here the solutions of all the levels on the SQLZOO Tutoral.
 1. [SELECT basics](#SELECT_basics)
 2. [SELECT names](#SELECT_names)
 3. [SELECT from WORLD Tutorial](#SELECT_from_WORLD_Tutorial)
-## SELECT basics <a name="SELECT_basics"></a>
+
+<details>
+<summary> SELECT basics <a name="SELECT_basics"></a> </summary>
+ 
 We are going to use a table called World for the next exercices.
 #### 1. show the population of Germany
 ```SQL
@@ -25,7 +28,10 @@ We are going to use a table called World for the next exercices.
   FROM world
     WHERE area BETWEEN 2e5 AND 25e4
 ```
-## SELECT names <a name="SELECT_names"></a>
+</details>
+
+<details>
+<summary> SELECT names <a name="SELECT_names"></a> </summary>
 
 #### 1. Find the country that start with Y
 ```SQL
@@ -120,8 +126,10 @@ The next questions are optional and only for students who are finding the basic 
     WHERE capital LIKE concat('%', name, '%') AND 
           capital<>name
 ```
+</details>
 
-## SELECT from WORLD Tutorial <a name="SELECT_from_WORLD_Tutorial"></a>
+<details>
+<summary> SELECT from WORLD Tutorial <a name="SELECT_from_WORLD_Tutorial"></a> </summary>
 
 #### 2. Large Countries
 ```SQL
@@ -195,3 +203,4 @@ FROM world
   FROM world
     WHERE name=capital
 ```
+</details>
