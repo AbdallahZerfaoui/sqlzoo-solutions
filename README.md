@@ -1,5 +1,6 @@
 # sqlzoo-solutions
-I will compile here the solutions of all the levels on the SQLZOO Tutoral.
+I will compile here the solutions of all the levels on the SQLZOO Tutoral:
+https://sqlzoo.net/
 
 # Table of contents
 1. [SELECT basics](#SELECT_basics)
