@@ -157,13 +157,13 @@ FROM world
 ```SQL
 SELECT name, population, area 
 FROM world
-  WHERE population > 250000000 or area > 3000000
+  WHERE population > 25e7 or area > 3e6
 ```
 #### 8. One or the other (but not both)
 ```SQL
 SELECT name, population, area 
 FROM world
-  WHERE population > 250000000 xor area > 3000000
+  WHERE population > 25e7 xor area > 3e6
 ```
 #### 9. Rounding
 ```SQL
