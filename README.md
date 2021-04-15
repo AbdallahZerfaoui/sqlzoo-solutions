@@ -4,6 +4,7 @@ I will compile here the solutions of all the levels on the SQLZOO Tutoral.
 # Table of contents
 1. [SELECT basics](#SELECT_basics)
 2. [SELECT names](#SELECT_names)
+3. [SELECT from WORLD Tutorial](#SELECT_from_WORLD_Tutorial)
 ## SELECT basics <a name="SELECT_basics"></a>
 We are going to use a table called World for the next exercices.
 #### 1. show the population of Germany
@@ -118,4 +119,79 @@ The next questions are optional and only for students who are finding the basic 
   FROM world
     WHERE capital LIKE concat('%', name, '%') AND 
           capital<>name
+```
+
+## SELECT from WORLD Tutorial <a name="SELECT_from_WORLD_Tutorial"></a>
+
+#### 2. Large Countries
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 3. Per capita GDP
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 4. South America In millions
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 5. France, Germany, Italy
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 6. United
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 7. Two ways to be big
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 8. One or the other (but not both)
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 9. Rounding
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 10. Trillion dollar economies
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 11. Name and capital have the same length
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 12. Matching name and capital
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
+```
+#### 13. All the vowels
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name=capital
 ```
