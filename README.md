@@ -6,6 +6,7 @@ https://sqlzoo.net/
 1. [SELECT basics](#SELECT_basics)
 2. [SELECT names](#SELECT_names)
 3. [SELECT from WORLD Tutorial](#SELECT_from_WORLD_Tutorial)
+4. [SELECT from Nobel](#SELECT_from_Nobel)
 
 <details>
 <summary> SELECT basics <a name="SELECT_basics"></a></summary>
@@ -58,7 +59,7 @@ We are going to use a table called World for the next exercices.
     WHERE name LIKE '%land'
 ```
 #### 5. Find the countries that start with "C" and end with "ia"
-​```SQL
+```SQL
   SELECT name 
   FROM world
     WHERE name LIKE 'c%ia'
@@ -217,3 +218,95 @@ WHERE name LIKE '%a%' AND
 ```
 </details>
 
+<details>
+<summary> SELECT from Nobel <a name="SELECT_from_Nobel"></a></summary>
+
+We continue practicing simple SQL queries on a single table.
+This tutorial is concerned with a table of Nobel prize winners. 
+
+#### 1. Winners from 1950
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 2. 1962 Literature
+```SQL
+  SELECT name, population 
+  FROM world
+    WHERE name IN ('Sweden', 'Norway', 'Denmark')
+```
+#### 3. Albert Einstein
+```SQL
+  SELECT name, area 
+  FROM world
+    WHERE area BETWEEN 2e5 AND 25e4
+```
+#### 4. Recent Peace Prizes
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 5. Literature in the 1980's
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 6. Only Presidents
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 7. John
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 8. Chemistry and Physics from different years
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 9. Exclude Chemists and Medics
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 10. Early Medicine, Late Literature
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+### Harder Questions
+#### 11. Umlaut
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 12. Apostrophe
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 13. Knights of the realm
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+#### 14. Chemistry and Physics last
+```SQL
+SELECT yr, subject, winner
+FROM nobel
+  WHERE yr = 1950
+```
+</details>
