@@ -232,81 +232,89 @@ FROM nobel
 ```
 #### 2. 1962 Literature
 ```SQL
-  SELECT name, population 
-  FROM world
-    WHERE name IN ('Sweden', 'Norway', 'Denmark')
+SELECT winner
+FROM nobel
+ WHERE yr = 1962
+   AND subject = 'Literature'
 ```
 #### 3. Albert Einstein
 ```SQL
-  SELECT name, area 
-  FROM world
-    WHERE area BETWEEN 2e5 AND 25e4
+SELECT yr, subject
+FROM nobel
+  WHERE winner = 'Albert Einstein'
 ```
 #### 4. Recent Peace Prizes
 ```SQL
-SELECT yr, subject, winner
+SELECT winner
 FROM nobel
-  WHERE yr = 1950
+  WHERE subject = 'Peace' AND
+        yr >=2000
 ```
 #### 5. Literature in the 1980's
 ```SQL
-SELECT yr, subject, winner
+SELECT *
 FROM nobel
-  WHERE yr = 1950
+  WHERE subject = 'Literature' AND
+        yr BETWEEN 1980 AND 1989
 ```
 #### 6. Only Presidents
 ```SQL
-SELECT yr, subject, winner
-FROM nobel
-  WHERE yr = 1950
+SELECT * FROM nobel
+  WHERE winner IN ('Theodore Roosevelt',
+                   'Woodrow Wilson',
+                   'Jimmy Carter',
+                   'Barack Obama')
 ```
 #### 7. John
 ```SQL
-SELECT yr, subject, winner
+SELECT winner
 FROM nobel
-  WHERE yr = 1950
+  WHERE winner LIKE 'John%'
 ```
 #### 8. Chemistry and Physics from different years
 ```SQL
-SELECT yr, subject, winner
-FROM nobel
-  WHERE yr = 1950
+SELECT * FROM nobel
+WHERE (subject = 'Physics' AND yr = 1980) OR
+      (subject = 'Chemistry' AND yr = 1984)
 ```
 #### 9. Exclude Chemists and Medics
 ```SQL
-SELECT yr, subject, winner
-FROM nobel
-  WHERE yr = 1950
+SELECT * FROM nobel
+WHERE yr = 1980 AND
+      subject NOT IN ('Chemistry', 'Medicine')
 ```
 #### 10. Early Medicine, Late Literature
 ```SQL
-SELECT yr, subject, winner
-FROM nobel
-  WHERE yr = 1950
+SELECT * FROM nobel
+  WHERE (subject = 'Medicine' AND yr < 1910) OR
+        (subject = 'Literature' AND yr >= 2004)
 ```
 ### Harder Questions
 #### 11. Umlaut
 ```SQL
-SELECT yr, subject, winner
+SELECT *
 FROM nobel
-  WHERE yr = 1950
+  WHERE winner = 'PETER GRÜNBERG'
 ```
 #### 12. Apostrophe
 ```SQL
-SELECT yr, subject, winner
+SELECT *
 FROM nobel
-  WHERE yr = 1950
+  WHERE winner LIKE 'EUGENE%NEILL'
 ```
 #### 13. Knights of the realm
 ```SQL
-SELECT yr, subject, winner
+SELECT winner, yr, subject 
 FROM nobel
-  WHERE yr = 1950
+  WHERE winner LIKE 'Sir%'
+  ORDER BY yr DESC, winner 
 ```
 #### 14. Chemistry and Physics last
 ```SQL
-SELECT yr, subject, winner
+SELECT winner, subject, 
+       subject IN ('Chemistry','Physics') AS bool
 FROM nobel
-  WHERE yr = 1950
+  WHERE yr=1984
+  ORDER BY bool, subject, winner
 ```
 </details>
