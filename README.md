@@ -368,8 +368,7 @@ SELECT name,
            CAST(
                ROUND(100*population /(SELECT population FROM world
                                         WHERE name = 'Germany'),0) 
-                												   AS INTEGER), 
-            															       '%') AS percentage
+                												   AS INTEGER), '%') AS percentage
 FROM world
 WHERE continent = 'Europe'
 ```
