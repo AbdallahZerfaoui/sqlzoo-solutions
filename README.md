@@ -7,6 +7,7 @@ https://sqlzoo.net/
 2. [SELECT names](#SELECT_names)
 3. [SELECT from WORLD Tutorial](#SELECT_from_WORLD_Tutorial)
 4. [SELECT from Nobel](#SELECT_from_Nobel)
+5. [SELECT within SELECT](#SELECT_within_SELECT)
 
 <details>
 <summary> SELECT basics <a name="SELECT_basics"></a></summary>
@@ -318,3 +319,66 @@ FROM nobel
   ORDER BY bool, subject, winner
 ```
 </details>
+
+<details>
+<summary> SELECT within SELECT <a name="SELECT_within_SELECT"></a> </summary>
+
+#### 1. Bigger than Russia
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE 'Y%'
+```
+
+#### 2. Richer than UK
+```SQL
+  SELECT name FROM world
+    WHERE name LIKE '%Y'
+```
+#### 3. Neighbours of Argentina and Australia
+```SQL
+  SELECT name FROM world
+    WHERE name LIKE '%x%'
+```
+#### 4. Between Canada and Poland
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE '%land'
+```
+#### 5. Percentages of Germany
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE 'c%ia'
+```
+#### 6. Bigger than every country in Europe
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE '%oo%'
+```
+#### 7. Largest in each continent
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE '%a%a%a%'
+```
+#### 8. First country of each continent (alphabetically)
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE '_t%'
+```
+#### 9. Difficult Questions That Utilize Techniques Not Covered In Prior Sections
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE '%o__o%'
+```
+#### 10. 
+```SQL
+  SELECT name 
+  FROM world
+    WHERE name LIKE '____'
+```
