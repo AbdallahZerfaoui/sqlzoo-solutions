@@ -323,62 +323,91 @@ FROM nobel
 <details>
 <summary> SELECT within SELECT <a name="SELECT_within_SELECT"></a> </summary>
 
+This tutorial looks at how we can use SELECT statements within SELECT statements to perform more complex queries using the table world.
 #### 1. Bigger than Russia
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE 'Y%'
+ SELECT name FROM world
+   WHERE population >
+     (SELECT population FROM world
+        WHERE name='Russia')
 ```
 
 #### 2. Richer than UK
 ```SQL
-  SELECT name FROM world
-    WHERE name LIKE '%Y'
+ SELECT name FROM world
+   WHERE continent ='Europe' AND
+         gdp/population >
+         (SELECT gdp/population
+         FROM world
+           WHERE name='United Kingdom')
 ```
 #### 3. Neighbours of Argentina and Australia
 ```SQL
-  SELECT name FROM world
-    WHERE name LIKE '%x%'
+ SELECT name, continent FROM world
+   WHERE continent IN
+         (SELECT continent
+          FROM world
+            WHERE name='Argentina' OR
+                  name='Australia')
 ```
 #### 4. Between Canada and Poland
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE '%land'
+SELECT name, population FROM world
+   WHERE population >
+         (SELECT population FROM world
+            WHERE name='Canada') AND 
+
+         population<
+         (SELECT population FROM world
+            WHERE name='Poland')
 ```
 #### 5. Percentages of Germany
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE 'c%ia'
+SELECT name,
+       CONCAT(
+           CAST(
+               ROUND(100*population /(SELECT population FROM world
+                                        WHERE name = 'Germany'),0) 
+                												   AS INTEGER), 
+            															       '%') AS percentage
+FROM world
+WHERE continent = 'Europe'
 ```
 #### 6. Bigger than every country in Europe
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE '%oo%'
+SELECT name FROM world
+  WHERE gdp >= ALL(SELECT gdp FROM world
+                     WHERE continent = 'Europe' AND gdp >0) AND 
+        continent <> 'Europe'
 ```
 #### 7. Largest in each continent
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE '%a%a%a%'
+SELECT continent, name, area FROM world x
+  WHERE area >= ALL
+                  (SELECT area FROM world y
+                     WHERE y.continent=x.continent AND
+                           area>0)
 ```
 #### 8. First country of each continent (alphabetically)
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE '_t%'
+SELECT continent, name FROM world x
+  WHERE name <= ALL
+                   (SELECT name FROM world y
+                      WHERE y.continent=x.continent)
 ```
+### Difficult Questions That Utilize Techniques Not Covered In Prior Sections
 #### 9. Difficult Questions That Utilize Techniques Not Covered In Prior Sections
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE '%o__o%'
+SELECT name, continent, population FROM world x
+  WHERE 25e6 >= ALL
+                  (SELECT population FROM world y
+                     WHERE y.continent=x.continent)
 ```
 #### 10. 
 ```SQL
-  SELECT name 
-  FROM world
-    WHERE name LIKE '____'
+SELECT name, continent FROM world x
+  WHERE population/3 >= ALL
+                          (SELECT population FROM world y
+                             WHERE y.continent=x.continent AND
+                                   x.name <> y.name)
 ```
